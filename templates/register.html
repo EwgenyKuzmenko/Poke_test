@@ -5,6 +5,10 @@
     <title>Poke</title>
 </head>
 <body>
-{{ form }}
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Register</button>
+</form>
 </body>
 </html>

@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<p> личный кабинет </p>
+    <a href="{% url 'poke:logout' %}">Выход</a>
+    <h1>Выберите покемона</h1>
+<div>
+<table border="1">
+    <caption>Таблица покемона</caption>
+     <tr>
+        <th>Имя покемона</th>
+        <th>Навыки</th>
+        <th>Статус</th>
+     </tr>
+    {% for p in pokes %}
+        <tr> <td>{{ p.name }}</td><td><a href="{{ p.url }}"> {{ p.url }}</a> </td><td>{{ p.state }}</td>
+            <td><a href="{% url 'poke:chosen' p.name %}"><button>Выбрать</button> </a> </td>
+        </tr>
+    {% endfor %}
+</table >
+    <a href="?{{ previous }}"><button>Previous page</button></a>
+    <a href="?{{ next }}"><button>Next page</button></a>
+<h1>Мои покемоны</h1>
+<table border="1">
+        <th>Имя покемона</th>
+    {% for item in my_pokes %}
+            <tr> <td><a href="{{ item.pokemon_url }}"> {{ item.pokemon_url }}</a> </td>
+            </tr>
+    {% endfor %}
+
+</table>
+
 </body>
 </html>
